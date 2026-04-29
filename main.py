@@ -3,21 +3,32 @@ import pytz
 from telethon import TelegramClient, events, functions, types
 from telethon.sessions import StringSession
 
-# --- CONFIGURATION (Railway Variables) ---
-API_ID = os.getenv("API_ID")
-API_HASH = os.getenv("API_HASH")
-SESSION_STRING = os.getenv("SESSION_STRING")
-OPENROUTER_KEY = os.getenv("OPENROUTER_API_KEY", "") 
+# --- CONFIGURATION (Directly put your values here) ---
+
+API_ID = 34769008  # Example: 1234567 (Isme quotes mat lagana)
+API_HASH = "98cc9d9d0750ba94abab2e60de1790a0"  # Example: "abc123def456..."
+SESSION_STRING = "1BVtsOKEBu3H0HfV72WmonKhUhefSprfgrakObI4WeQElpzNwcFouOgc80BDI3s9AUs4yasFI6eboqRQoZlJPiqZX1Ik7PeU_UXFAlVOizeT_t-LUocVJUcBrtm4QcXbBVO3UsI7ccnmVwRwiuxOyfWGjVG7V5nbANHk0PV-o80N4m7B3Cn1hkarqfZjMK_z68pnaaaUfhfppqPrXWKOEJn4TH5JRtQRirlWgFq4tN-ppnvXOdUJYouFLQP2KnDC8bZVpkzm2SYa1RQNO6LoCdFuPSYgJprJTwLoKR1bTpKy1xOZfgMNgGOTb48qsd7AjUDgVpmNDCDn92wUS7MnS1syJxDEy8fo="  # Aapka Telethon Session String
+OPENROUTER_KEY = "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"  # OpenRouter API Key
+
+# ---------------------------------------------------
 
 client = TelegramClient(StringSession(SESSION_STRING), int(API_ID), API_HASH)
 IST = pytz.timezone('Asia/Kolkata')
 AI_MODEL = "google/gemini-2.0-flash-exp:free"
 
 # --- PREMIUM EMOJI IDs ---
-EMOJI_MAGIC = 5431443046535175653 # 🪄
-EMOJI_ALIVE = 5442978931139314811 # ✅
-EMOJI_HELP = 5463105436695574510  # 📚
-EMOJI_HEART = 5429393664323249089 # ❤️
+EMOJI_MAGIC = 5431443046535175653 
+EMOJI_ALIVE = 5442978931139314811 
+EMOJI_HELP = 5463105436695574510  
+EMOJI_HEART = 5429393664323249089 
+
+# --- Rest of the code stays the same ---
+# (Pura code jo maine pehle diya tha, baaki sab waisa hi rahega)
+ 
+
+# --- Rest of the code stays the same ---
+# (Pura code jo maine pehle diya tha, baaki sab waisa hi rahega)
+
 
 # --- GLOBALS ---
 AFK_REASON = None
