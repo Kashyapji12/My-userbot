@@ -18,4 +18,6 @@ async def main():
     await load_plugins()
     await client.run_until_disconnected()
 
-client.loop.run_until_complete(main())
+import asyncio
+
+asyncio.run(main())
