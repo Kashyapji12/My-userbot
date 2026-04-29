@@ -1,2 +1,5 @@
 telethon
 asyncio
+speedtest-cli
+pytz
+requests
