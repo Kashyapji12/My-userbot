@@ -21,3 +21,10 @@ async def main():
 import asyncio
 
 asyncio.run(main())
+import logging
+
+logging.basicConfig(
+    filename="logs.txt",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
