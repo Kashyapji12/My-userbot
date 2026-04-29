@@ -1,4 +1,5 @@
 telethon
 aiohttp
+python-dotenv
 gtts
 pytz
