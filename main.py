@@ -1,43 +1,42 @@
 import os
-import importlib
 import asyncio
+import importlib
 import logging
 
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
-
 from config import API_ID, API_HASH, SESSION
 
-# ---------------- LOGGING ---------------- #
+# logging
 logging.basicConfig(
     filename="logs.txt",
     level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
+    format="%(asctime)s - %(message)s"
 )
 
-# ---------------- CLIENT ---------------- #
 client = TelegramClient(StringSession(SESSION), API_ID, API_HASH)
 
-
-# ---------------- LOAD PLUGINS ---------------- #
+# load plugins
 async def load_plugins():
-    for file in os.listdir("plugins"):
-        if file.endswith(".py"):
-            try:
-                importlib.import_module(f"plugins.{file[:-3]}")
-                logging.info(f"Loaded plugin: {file}")
-            except Exception as e:
-                logging.error(f"Failed to load {file}: {e}")
+    if not os.path.exists("plugins"):
+        return
+    for f in os.listdir("plugins"):
+        if f.endswith(".py"):
+            importlib.import_module(f"plugins.{f[:-3]}")
 
-
-# ---------------- GLOBAL LOGGER ---------------- #
+# log messages
 @client.on(events.NewMessage)
-async def log_messages(event):
-    try:
-        if event.text:
-            logging.info(f"{event.sender_id} | {event.chat_id} : {event.text}")
-    except Exception as e:
-        logging.error(f"Log error: {e}")
+async def log_all(e):
+    if e.text:
+        logging.info(f"{e.sender_id}: {e.text}")
 
+async def main():
+    await client.start()
+    me = await client.get_me()
+    print(f"🔥 Started as {me.first_name}")
 
-# ---------------- KEEP
+    await load_plugins()
+    await client.run_until_disconnected()
+
+if __name__ == "__main__":
+    asyncio.run(main())
