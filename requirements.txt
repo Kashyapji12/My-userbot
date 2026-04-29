@@ -1,5 +1,4 @@
 telethon
-asyncio
-speedtest-cli
-pytz
 requests
+pytz
+cryptg
