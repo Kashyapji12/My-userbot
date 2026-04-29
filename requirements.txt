@@ -1,4 +1,4 @@
 telethon
-requests
+aiohttp
+gtts
 pytz
-cryptg
